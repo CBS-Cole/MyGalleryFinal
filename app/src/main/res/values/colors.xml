@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#299052</color>
+    <color name="colorPrimaryDark">#299052</color>
+    <color name="colorAccent">#03AFA3</color>
+
+    <color name="theme_color">#9BDB4E</color> <!-- 用于重要性按钮及高亮元素 -->
+    <color name="common_color_03AFA3">#03AFA3</color>
+    <color name="theme_color_button_clicked">#299052</color>
+    <color name="theme_tab_host_bg_color">#FAFAFA</color>
+    <color name="theme_color_c2">#2A3637</color>
+    <color name="theme_color_c5">#909095</color>
+</resources>
