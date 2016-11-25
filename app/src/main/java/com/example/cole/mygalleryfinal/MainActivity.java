@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ImageFileUtil.initImageFileUtil(this, null);
+
         setContentView(R.layout.activity_main);
         mBtn1 = (Button) findViewById(R.id.btn1);
         mBtn2 = (Button) findViewById(R.id.btn2);
@@ -63,6 +63,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
                     if (isOriginal) {
+                        ImageFileUtil.getPhotoByCameraWithFunc(TAKE_SMALL_PICTURE, false, new ImageFileUtil.OnGetPhotoResultListener() {
+                            @Override
+                            public void OnSuccess(int requestCode, ArrayList<MLYLocalImgBean> imgList) {
+
+                            }
+
+                            @Override
+                            public void OnSuccess(int requestCode, int width, int height, Uri fileUri) {
+                                if (requestCode == TAKE_SMALL_PICTURE) {
+                                    if (fileUri != null) {
+                                        ImageCacheUtil.getInstance().displayImage(mImageView, fileUri.toString());
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void OnFail(int requestCode, String errMsg) {
+
+                            }
+                        });
+                    } else {
                         ImageFileUtil.getPhotoByCamera(TAKE_SMALL_PICTURE, new ImageFileUtil.OnGetPhotoResultListener() {
                             @Override
                             public void OnSuccess(int requestCode, ArrayList<MLYLocalImgBean> imgList) {
@@ -83,31 +104,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             }
                         });
-                    } else {
-                        ImageFileUtil.getPhotoByCameraWithFunc(TAKE_SMALL_PICTURE, true, new ImageFileUtil.OnGetPhotoResultListener() {
-                            @Override
-                            public void OnSuccess(int requestCode, ArrayList<MLYLocalImgBean> imgList) {
 
-                            }
-
-                            @Override
-                            public void OnSuccess(int requestCode, int width, int height, Uri fileUri) {
-                                if (requestCode == TAKE_SMALL_PICTURE) {
-                                    if (fileUri != null) {
-                                        ImageCacheUtil.getInstance().displayImage(mImageView, fileUri.toString());
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void OnFail(int requestCode, String errMsg) {
-
-                            }
-                        });
                     }
                 } else {
                     if (isOriginal) {
-                        ImageFileUtil.getPhotoSingle(CHOOSE_BIG_PICTURE, new ImageFileUtil.OnGetPhotoResultListener() {
+                        ImageFileUtil.getPhotoSingleWithFunc(CHOOSE_BIG_PICTURE, false, new ImageFileUtil.OnGetPhotoResultListener() {
                             @Override
                             public void OnSuccess(int requestCode, ArrayList<MLYLocalImgBean> imgList) {
                             }
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         });
                     } else {
-                        ImageFileUtil.getPhotoSingleWithFunc(CHOOSE_BIG_PICTURE, true, new ImageFileUtil.OnGetPhotoResultListener() {
+                        ImageFileUtil.getPhotoSingle(CHOOSE_BIG_PICTURE, new ImageFileUtil.OnGetPhotoResultListener() {
                             @Override
                             public void OnSuccess(int requestCode, ArrayList<MLYLocalImgBean> imgList) {
                             }
