@@ -16,15 +16,15 @@ import cn.finalteam.galleryfinal.widget.GFImageView;
  * 描述: 图片加载器
  */
 
-public class MLYUILImageLoader implements cn.finalteam.galleryfinal.ImageLoader {
+public class UILImageLoader implements cn.finalteam.galleryfinal.ImageLoader {
 
     private Bitmap.Config mImageConfig;
 
-    public MLYUILImageLoader() {
+    public UILImageLoader() {
         this(Bitmap.Config.RGB_565);
     }
 
-    public MLYUILImageLoader(Bitmap.Config config) {
+    public UILImageLoader(Bitmap.Config config) {
         this.mImageConfig = config;
     }
 

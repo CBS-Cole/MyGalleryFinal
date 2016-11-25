@@ -41,9 +41,6 @@ public class ImageCacheUtil {
         if (mIsInitilize != true) {
             mContext = context;
 
-//            String cachePath = context.getApplicationContext().getExternalFilesDir(Environment.getDataDirectory().getAbsolutePath()).getAbsolutePath() + File.separator + "cache";
-//            File cacheDir = StorageUtils.getCacheDirectory(context);
-
             defaultNoDefaultDisplayOptions = new DisplayImageOptions.Builder()
                     .bitmapConfig(Bitmap.Config.RGB_565)
                     .displayer(new FadeInBitmapDisplayer(150))

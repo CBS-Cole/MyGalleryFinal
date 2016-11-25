@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MyGalleryFinal</string>
+    <string name="trim">剪切</string>
+    <string name="trim_des">剪切强制剪切成正方形</string>
+    <string name="original">原图</string>
 </resources>
